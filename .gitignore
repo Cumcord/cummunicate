@@ -1,0 +1,4 @@
+node_modules
+dist
+# is actually designed to be checked into VCS, but id prefer to not have the clutter
+.idea
