@@ -12,10 +12,10 @@ const ports = (await cummunicate("get_info")).map(p => p[0]);
 
 ### Bundler
 
-`npm i @cumcord/cummunicate`
+`npm i @cumjar/cummunicate`
 
 ```js
-import cummunicate from "@cumcord/cummunicate";
+import cummunicate from "@cumjar/cummunicate";
 
 cummunicate()
 ```
@@ -25,7 +25,7 @@ cummunicate()
 ```html
 
 <script type="module">
-	import cummunicate from "https://cdn.esm.sh/@cumcord/cummunicate";
+	import cummunicate from "https://cdn.esm.sh/@cumjar/cummunicate";
 
 	cummunicate()
 </script>
@@ -35,7 +35,7 @@ cummunicate()
 
 ```html
 
-<script src="https://cdn.esm.sh/@cumcord/cummunicate/dist/browser.js"/>
+<script src="https://cdn.esm.sh/@cumjar/cummunicate/dist/browser.js"/>
 <script>
 	cummunicate()
 </script>

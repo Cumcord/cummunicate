@@ -1,7 +1,5 @@
 {
-  "name": "@cumcord/cummunicate",
-  "//": "private while we think of a new org name",
-  "private": true,
+  "name": "@cumjar/cummunicate",
   "version": "1.0.0",
   "description": "Cummunicate with the CC websocket in a sane way",
   "main": "dist/index.js",
