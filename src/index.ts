@@ -10,9 +10,6 @@ interface WsReply<TU = string> {
 
 type WsResult = [number, WsReply];
 
-let lastId = 0;
-const getId = () => Math.random().toString(36) + lastId++;
-
 const promisifyWsWithTimeout = (ws: WebSocket, id: string) =>
   new Promise<WsReply>((res, rej) => {
     ws.onmessage = (ev) => {
@@ -22,7 +19,10 @@ const promisifyWsWithTimeout = (ws: WebSocket, id: string) =>
           res(parsed);
       } catch {}
     };
-    setTimeout(rej, 5000);
+    ws.onclose = rej;
+    // if a reply is not sent back in 15 seconds, reject
+    // this is useful for, say, ignored confirmation modals or actions that send no reply
+    setTimeout(rej, 15000);
   });
 
 // noinspection JSUnusedGlobalSymbols
@@ -32,7 +32,11 @@ export default async (action: string, payload?: object) => {
   for (let i = 6463; i <= 6473; i++) {
     const ws = new WebSocket(`ws://127.0.0.1:${i}/cumcord`);
 
-    const msg: WsInitiator = { ...payload, uuid: getId(), action };
+    const msg: WsInitiator = {
+      ...payload,
+      uuid: Math.random().toString(36),
+      action,
+    };
 
     ws.onopen = () => {
       ws.send(JSON.stringify(msg));
@@ -47,6 +51,7 @@ export default async (action: string, payload?: object) => {
   }
 
   // give the WS time
+  // all ports should respond in 500ms without fail
   await new Promise((res) => setTimeout(res, 500));
 
   return await Promise.all(promises);

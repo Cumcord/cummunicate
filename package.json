@@ -1,6 +1,6 @@
 {
   "name": "@cumjar/cummunicate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cummunicate with the CC websocket in a sane way",
   "main": "dist/index.js",
   "module": "dist/index.js",
