@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "rm -rf dist && tsc && esbuild src/browser.js --bundle --outfile=dist/browser.js"
+    "prepublish": "rm -rf dist && tsc && esbuild src/browser.js --bundle --format=esm --outfile=dist/browser.js"
   },
   "repository": "github:cumcord/cummunicate",
   "author": "Cumcord Team",
